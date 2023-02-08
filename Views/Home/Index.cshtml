@@ -4,12 +4,13 @@
     PokeApiClient pokeClient = new PokeApiClient();
     Pokemon PK = await pokeClient.GetResourceAsync<Pokemon>(PKID);
 
-    Random IVH = new Random();
-    int EV = 255;
-    int level = 100;
+    int IVH = rand.Next(0,31);
+    int EV = rand.Next(0,255);
+    int level = rand.Next(1,100);
     int HP = 1;
 
-    HP = ((2 * PK.Stats[0].BaseStat + IVH.Next(0, 31) + (EV / 4) * level) / 100) + level + 10;
+    HP = (
+        (2 * PK.Stats[0].BaseStat + IVH + (EV / 4) * level) / 100) + level + 10;
 
 }
 
