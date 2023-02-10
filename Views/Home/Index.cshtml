@@ -11,7 +11,11 @@
     if (PK.IsSuccessStatusCode)
     {
         var content = PK.Content.ReadAsStringAsync();
-        <h1> @content.Result</h1>
+        if (content.Result.Contains("abilities"))
+        {
+          <h1>@content.Result.</h1>
+        }
+        //<h1> @content.Result</h1>
         Console.WriteLine(content);
     }
     else
