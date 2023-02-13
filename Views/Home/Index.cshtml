@@ -1,10 +1,43 @@
 ﻿@{
-    PokeApiClient pokeClient = new PokeApiClient();
-    Pokemon hooh = await pokeClient.GetResourceAsync<Pokemon>("ho-oh");
-    
+    Random rand = new Random();
+    int PKID = rand.Next(1,1080);
+
+    HttpClient client = new HttpClient();
+    client.BaseAddress = new Uri("https://pokeapi.co/api/v2/pokemon/");
+
+    var PK = await client.GetAsync(PKID.ToString());
+
+
+    if (PK.IsSuccessStatusCode)
+    {
+        var content = PK.Content.ReadAsStringAsync();
+        if (content.Result.Contains("abilities"))
+        {
+          <h1>@content.Result.</h1>
+        }
+        //<h1> @content.Result</h1>
+        Console.WriteLine(content);
+    }
+    else
+    {
+        Console.WriteLine("FAILED");
+    }
+
+
+    /*PokeApiClient pokeClient = new PokeApiClient();
+
+    int IVH = rand.Next(0,31);
+    int EV = rand.Next(0,255);
+    int level = rand.Next(1,100);
+    int HP = 1;
+
+    //HP = ((2 * PK.Stats[0].BaseStat + IVH + (EV / 4) * level) / 100) + level + 10;*/
+
 }
 
 <div>
-    <h1> @hooh.Name</h1>
-    <img src="@hooh.Sprites.FrontDefault"/>
+    @*<h1> @PK.Id</h1>
+    <img src="@PK.Sprites.FrontDefault"/>
+    <h1> @HP.ToString() </h1>
+    <h1> @PK.Stats[0].Stat.Name </h1>*@
 </div>
