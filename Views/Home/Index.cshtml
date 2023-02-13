@@ -7,29 +7,29 @@
 
     var PK = await client.GetAsync(PKID.ToString());
 
-      if (PK.IsSuccessStatusCode)
-        {
-        var content = PK.Content.ReadAsStringAsync();
-        if (content.Result.Contains("abilities"))
-          {
-          <h1>@content.Result.</h1>
-        }
-        //<h1> @content.Result</h1>
-        Console.WriteLine(content);
-        }
-        else
-        {
-        Console.WriteLine("FAILED");
-    }
+    //  if (PK.IsSuccessStatusCode)
+    //    {
+    //    var content = PK.Content.ReadAsStringAsync();
+    //    if (content.Result.Contains("abilities"))
+    //      {
+    //      <h1>@content.Result.</h1>
+    //    }
+    //    //<h1> @content.Result</h1>
+    //    Console.WriteLine(content);
+    //    }
+    //    else
+    //    {
+    //    Console.WriteLine("FAILED");
+    //}
 
-    PokeApiClient pokeClient = new PokeApiClient();
+    //PokeApiClient pokeClient = new PokeApiClient();
 
-    int IVH = rand.Next(0,31);
-    int EV = rand.Next(0,255);
-    int level = rand.Next(1,100);
-    int HP = 1;
+    //int IVH = rand.Next(0,31);
+    //int EV = rand.Next(0,255);
+    //int level = rand.Next(1,100);
+    //int HP = 1;
 
-    HP = ((2 * PK.Stats[0].BaseStat + IVH + (EV / 4) * level) / 100) + level + 10;
+    //HP = ((2 * PK.Stats[0].BaseStat + IVH + (EV / 4) * level) / 100) + level + 10;
 
 }
 
