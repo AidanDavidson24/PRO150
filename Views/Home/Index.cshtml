@@ -7,20 +7,20 @@
 
     var PK = await client.GetAsync(PKID.ToString());
 
-    //  if (PK.IsSuccessStatusCode)
-    //    {
-    //    var content = PK.Content.ReadAsStringAsync();
-    //    if (content.Result.Contains("abilities"))
-    //      {
-    //      <h1>@content.Result.</h1>
-    //    }
-    //    //<h1> @content.Result</h1>
-    //    Console.WriteLine(content);
-    //    }
-    //    else
-    //    {
-    //    Console.WriteLine("FAILED");
-    //}
+      if (PK.IsSuccessStatusCode)
+        {
+        var content = PK.Content.ReadAsStringAsync();
+        if (content.Result.Contains("abilities"))
+          {
+            <h1>@content.Result.</h1>
+        }
+        //<h1> @content.Result</h1>
+        Console.WriteLine(content);
+    }
+    else
+    {
+        Console.WriteLine("FAILED");
+    }
 
     //PokeApiClient pokeClient = new PokeApiClient();
 
