@@ -1,4 +1,5 @@
 ﻿@{
+    PokemonElements PKE = new PokemonElements();
     Random rand = new Random();
     int PKID = rand.Next(1,1080);
 
@@ -7,15 +8,12 @@
 
     var PK = await client.GetAsync(PKID.ToString());
 
-
     if (PK.IsSuccessStatusCode)
     {
         var content = PK.Content.ReadAsStringAsync();
-        if (content.Result.Contains("abilities"))
-        {
-          <h1>@content.Result.</h1>
-        }
-        //<h1> @content.Result</h1>
+        <h1>@content.Result</h1>
+        
+
         Console.WriteLine(content);
     }
     else
