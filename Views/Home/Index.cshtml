@@ -10,8 +10,9 @@
 
     if (PK.IsSuccessStatusCode)
     {
+        <h1>@PokemonElements.LoadPokemon(PKID).Name</h1>
         var content = PK.Content.ReadAsStringAsync();
-        <h1>@content.Result</h1>
+        //<h1>@content.Result</h1>
         
 
         Console.WriteLine(content);

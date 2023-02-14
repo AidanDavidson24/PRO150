@@ -16,6 +16,7 @@ namespace Poke_Adventures.Models
             [JsonPropertyName("url")]
             public Uri Url { get; set; }
 
+
             public static PokemonElements LoadPokemon(int num)
             {  
                 string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/pokemon/{num}");
