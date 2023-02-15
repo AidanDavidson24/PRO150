@@ -10,6 +10,9 @@ namespace Poke_Adventures.Models
         [JsonPropertyName("abilities")]
          public List<AbilityProp> Abilities { get; set; }
 
+        [JsonPropertyName("moves")]
+         public List<MoveProp> Moves { get; set; }
+
         [JsonPropertyName("name")]
         public string? Name { get; set; }
 
@@ -22,14 +25,8 @@ namespace Poke_Adventures.Models
             PokemonElements pokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
             return pokemon;
         }
-
-        public static PokemonElements LoadAbility(int num)
-        {
-            string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/ability/{num}");
-            PokemonElements pokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
-            return pokemon;
-        }
     }
+
     public class AbilityProp
     {
         [JsonPropertyName("ability")]
@@ -37,6 +34,26 @@ namespace Poke_Adventures.Models
 
         [JsonPropertyName("is_hidden")]
         public bool IsHidden { get; set; }
+    }
+
+    public class MoveElements
+    {
+        [JsonPropertyName("accuracy")]
+        public int Accuracy { get; set; }
+
+        public static MoveElements LoadMove(Common move)
+        {
+            string json = new WebClient().DownloadString(move.Url);
+            MoveElements moveElements = JsonConvert.DeserializeObject<MoveElements>(json);
+            return moveElements;
+        }
+    }
+
+
+    public class MoveProp
+    {
+        [JsonPropertyName("move")]
+        public Common Move { get; set; }
     }
 
     public class Common
