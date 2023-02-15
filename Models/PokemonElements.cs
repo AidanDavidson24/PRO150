@@ -8,7 +8,7 @@ namespace Poke_Adventures.Models
     {       
 
         [JsonPropertyName("abilities")]
-         public List<AbilityProp>? Abilities { get; set; }
+         public List<AbilityProp> Abilities { get; set; }
 
         [JsonPropertyName("name")]
         public string? Name { get; set; }
@@ -33,7 +33,7 @@ namespace Poke_Adventures.Models
     public class AbilityProp
     {
         [JsonPropertyName("ability")]
-        public Common? AbilityAbility { get; set; }
+        public Common Ability { get; set; }
 
         [JsonPropertyName("is_hidden")]
         public bool IsHidden { get; set; }
@@ -42,7 +42,7 @@ namespace Poke_Adventures.Models
     public class Common
     {
         [JsonPropertyName("name")]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
         [JsonPropertyName("url")]
         public Uri? Url { get; set; }
