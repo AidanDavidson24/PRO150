@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Poke_Adventures.Models
 {
+    //ALL VARIABLES MUST BE NAMED THE SAME AS THE JSON PROPERTY
     public class PokemonElements
-    {       
-
+    {
         [JsonPropertyName("abilities")]
          public List<AbilityProp> Abilities { get; set; }
 
@@ -14,7 +14,7 @@ namespace Poke_Adventures.Models
         public int baseEXP { get; set; }
 
         [JsonPropertyName("moves")]
-        public List<MovesProp> Moves { get; set; }
+        public List<MoveProp> Moves { get; set; }
 
         [JsonPropertyName("sprites")]
         public SpritesProp Sprites { get; set; }
@@ -50,8 +50,11 @@ namespace Poke_Adventures.Models
         [JsonPropertyName("pp")]
         public int PP { get; set; }
 
-        [JsonPropertyName("type")]
-        public int Type { get; set; }
+        [JsonPropertyName("damage_class")]
+        public Common Damage_Class { get; set; }
+
+        [JsonPropertyName("effect_entries")]
+        public List<EffectProp> Effect_Entries { get; set; }
 
         public static MoveElements LoadMove(Common move)
         {
@@ -59,6 +62,12 @@ namespace Poke_Adventures.Models
             MoveElements moveElements = JsonConvert.DeserializeObject<MoveElements>(json);
             return moveElements;
         }
+    }
+
+    public class EffectProp
+    {
+        [JsonPropertyName("effect")]
+        public string Effect { get; set; }
     }
 
     public class AbilityProp
@@ -73,7 +82,7 @@ namespace Poke_Adventures.Models
         public int Slot { get; set; }
     }
 
-    public class MovesProp
+    public class MoveProp
     {
         [JsonPropertyName("move")]
         public Common Move { get; set; }
@@ -106,7 +115,8 @@ namespace Poke_Adventures.Models
 
     public class TypesProp
     {
-
+        [JsonPropertyName("type")]
+        public Common Type { get; set; }
     }
 
     public class Common
