@@ -42,16 +42,22 @@ namespace Poke_Adventures.Models
     public class MoveElements
     {
         [JsonPropertyName("accuracy")]
-        public int Accuracy { get; set; }
+        public int? Accuracy { get; set; }
 
         [JsonPropertyName("power")]
-        public int Power { get; set; }
+        public int? Power { get; set; }
 
         [JsonPropertyName("pp")]
         public int PP { get; set; }
 
+        [JsonPropertyName("type")]
+        public Common Type { get; set; }
+
         [JsonPropertyName("damage_class")]
         public Common Damage_Class { get; set; }
+
+        [JsonPropertyName("id")]
+        public int ID { get; set; }
 
         [JsonPropertyName("effect_entries")]
         public List<EffectProp> Effect_Entries { get; set; }
