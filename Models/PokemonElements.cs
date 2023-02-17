@@ -36,20 +36,6 @@ namespace Poke_Adventures.Models
         public bool IsHidden { get; set; }
     }
 
-    public class MoveElements
-    {
-        [JsonPropertyName("accuracy")]
-        public int Accuracy { get; set; }
-
-        public static MoveElements LoadMove(Common move)
-        {
-            string json = new WebClient().DownloadString(move.Url);
-            MoveElements moveElements = JsonConvert.DeserializeObject<MoveElements>(json);
-            return moveElements;
-        }
-    }
-
-
     public class MoveProp
     {
         [JsonPropertyName("move")]

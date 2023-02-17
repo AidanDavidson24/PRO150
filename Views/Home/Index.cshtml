@@ -5,10 +5,22 @@
 
     if (true)
     {
-        <h1>@PokemonElements.LoadPokemon(PKID).Name</h1>
-        <h1>@PokemonElements.LoadPokemon(PKID).Abilities[0].Ability.Name</h1>
-        <h1>@PokemonElements.LoadPokemon(PKID).Moves[0].Move.Name</h1>
-        <h1>@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[0].Move).Accuracy</h1>
+        PokemonElements pokemon = PokemonElements.LoadPokemon(PKID);
+
+        <h1>@pokemon.Name</h1>
+        <br />
+        <h1>@pokemon.Moves[0].Move.Name</h1>
+
+        MoveElements move = MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[0].Move);
+        <h1>@move.Accuracy</h1>
+        <h1>@move.PP</h1>
+        <h1>@move.Priority</h1>
+        <h1>@move.Meta.Healing</h1>
+
+        <br />
+        <h1>@pokemon.Abilities[0].Ability.Name</h1>
+        AbilityElements ability = AbilityElements.LoadAbility(PokemonElements.LoadPokemon(PKID).Abilities[0].Ability);
+        <h1>@ability.Effect_Entries[0].Effect</h1>
 
 
         //<h1>@content.Result</h1>
@@ -20,7 +32,7 @@
 
 
     /*PokeApiClient pokeClient = new PokeApiClient();
-
+     * 
     int IVH = rand.Next(0,31);
     int EV = rand.Next(0,255);
     int level = rand.Next(1,100);
