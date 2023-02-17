@@ -23,11 +23,14 @@
         <h1>@ability.Effect_Entries[0].Effect</h1>
 
 
-        //<h1>@content.Result</h1>
+    if(PokemonElements.LoadPokemon(PKID).Types.Count == 2)
+    {
+        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
+        <h1>@PokemonElements.LoadPokemon(PKID).Types[1].Type.Name</h1>
     }
     else
     {
-        Console.WriteLine("FAILED");
+        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
     }
 
 
@@ -38,13 +41,7 @@
     int level = rand.Next(1,100);
     int HP = 1;
 
-    //HP = ((2 * PK.Stats[0].BaseStat + IVH + (EV / 4) * level) / 100) + level + 10;*/
+    //Gets the first move in the list of moves a pokemon can learn
+    //(PokemonElements.LoadPokemon(PKID).Moves[0].Move)
 
 }
-
-<div>
-    @*<h1> @PK.Id</h1>
-    <img src="@PK.Sprites.FrontDefault"/>
-    <h1> @HP.ToString() </h1>
-    <h1> @PK.Stats[0].Stat.Name </h1>*@
-</div>
