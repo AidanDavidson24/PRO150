@@ -18,8 +18,8 @@
     {
         <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
     }
-    <h1>@PokemonElements.LoadPokemon(PKID).Moves[1].Move.Name</h1>
-    <h1>@PokemonModel.AttackDamage(MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[2].Move).ID)</h1>
+    <h1>@PokemonElements.LoadPokemon(PKID).Moves[2].Move.Name</h1>
+    <h1>@PokemonModel.AttackDamage(MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[2].Move).ID, PKID)</h1>
     //<h1>@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[1].Move).Power</h1>
 
     //Gets the first move in the list of moves a pokemon can learn

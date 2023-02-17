@@ -35,10 +35,10 @@
             return stats;
         }
 
-        public static int? AttackDamage(int ID)
+        public static int? AttackDamage(int MoveID, int PKID)
         {
-            int? Damage = 0;
-            int? Power = MoveElements.LoadMove(PokemonElements.LoadPokemon(ID).Moves[ID].Move).Power;
+            int? Damage = 1;
+            int? Power = MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Power;
             float crit = 1;
             float STAB = 1;
             float? critDamage = crit;
@@ -48,15 +48,16 @@
                 crit = 1.5f;
             }
 
-            if (PokemonElements.LoadPokemon(ID).Types[0].Type == MoveElements.LoadMove(PokemonElements.LoadPokemon(ID).Moves[ID].Move).Type || PokemonElements.LoadPokemon(ID).Types[1].Type == MoveElements.LoadMove(PokemonElements.LoadPokemon(ID).Moves[ID].Move).Type)
+            if (PokemonElements.LoadPokemon(PKID).Types[0].Type == MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Type || PokemonElements.LoadPokemon(PKID).Types[1].Type == MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Type)
             {
                 STAB = 1.5f;
             }
 
+            float dia = rand.Next(85, 100) / 100;
 
-            if (MoveElements.LoadMove(PokemonElements.LoadPokemon(ID).Moves[ID].Move).Damage_Class.Name == "physical")
+            if (MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Damage_Class.Name == "physical")
             {
-                Damage = Convert.ToInt32(((((((2 / level) / 5) + 2) * Power * (ATK / DEF)) / 50) + 2) * critDamage * rand.Next(85,100) * STAB);
+                Damage = Convert.ToInt32(Math.Floor((decimal)(((((((2 / level) / 5) + 2) * Power * (31 / 10)) / 50) + 2) * critDamage * rand.Next(85,100) / 100 * STAB)));
             }
 
             return Damage;
