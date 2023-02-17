@@ -8,34 +8,185 @@
         PokemonElements pokemon = PokemonElements.LoadPokemon(PKID);
 
         <h1>@pokemon.Name</h1>
-        <br />
-        <h1>@pokemon.Moves[0].Move.Name</h1>
 
-        MoveElements move = MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[0].Move);
+        <br />
+        <h1>Moves</h1>
+        <h1>@pokemon.Moves[0].Move.Name</h1>
+        MoveElements move = MoveElements.LoadMove(pokemon.Moves[0].Move);
         <h1>@move.Accuracy</h1>
         <h1>@move.PP</h1>
         <h1>@move.Priority</h1>
         <h1>@move.Meta.Healing</h1>
 
         <br />
+        <h1>Abilities</h1>
         <h1>@pokemon.Abilities[0].Ability.Name</h1>
-        AbilityElements ability = AbilityElements.LoadAbility(PokemonElements.LoadPokemon(PKID).Abilities[0].Ability);
+        AbilityElements ability = AbilityElements.LoadAbility(pokemon.Abilities[0].Ability);
         <h1>@ability.Effect_Entries[0].Effect</h1>
 
+        <br />
+        <h1>Types</h1>
+        if (pokemon.Types.Count == 2)
+        {
+            <h1>@pokemon.Types[0].Type.Name and @pokemon.Types[1].Type.Name</h1>
 
-    if(PokemonElements.LoadPokemon(PKID).Types.Count == 2)
-    {
-        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
-        <h1>@PokemonElements.LoadPokemon(PKID).Types[1].Type.Name</h1>
+            OneTypeWAS(pokemon);
+        }
+        else
+        {
+            <h1>@pokemon.Types[0].Type.Name</h1>
+            TypeElements type = TypeElements.LoadType(pokemon.Types[0].Type);
+        }
+
+        
     }
-    else
+
+    void OneTypeWAS(PokemonElements pokemon)
     {
-        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
+        TypeElements type1 = TypeElements.LoadType(pokemon.Types[0].Type);
+
+        if (type1.Damage_Relations.No_Damage_To.Count > 0)
+        {
+            <h1>No Damage To</h1>
+            foreach (var type in type1.Damage_Relations.No_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Half_Damage_To.Count > 0)
+        {
+            <h1>Half Damage To</h1>
+            foreach (var type in type1.Damage_Relations.Half_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Double_Damage_To.Count > 0)
+        {
+            <h1>Double Damage To</h1>
+            foreach (var type in type1.Damage_Relations.Double_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.No_Damage_From.Count > 0)
+        {
+            <h1>No Damage From</h1>
+            foreach (var type in type1.Damage_Relations.No_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Half_Damage_From.Count > 0)
+        {
+            <h1>Half Damage From</h1>
+            foreach (var type in type1.Damage_Relations.Half_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Double_Damage_From.Count > 0)
+        {
+            <h1>Double Damage From</h1>
+            foreach (var type in type1.Damage_Relations.Double_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+    }
+
+    void TwoTypeWAS(PokemonElements pokemon)
+    {
+
+        TypeElements type1 = TypeElements.LoadType(pokemon.Types[0].Type);
+        TypeElements type2 = TypeElements.LoadType(pokemon.Types[1].Type);
+
+        if (type1.Damage_Relations.No_Damage_To.Count > 0 || type2.Damage_Relations.No_Damage_To.Count > 0)
+        {
+            <h1>No Damage To</h1>
+            foreach (var type in type1.Damage_Relations.No_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+            
+            foreach (var type in type2.Damage_Relations.No_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Half_Damage_To.Count > 0 || type2.Damage_Relations.Half_Damage_To.Count > 0)
+        {
+            <h1>Half Damage To</h1>
+            foreach (var type in type1.Damage_Relations.Half_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+            foreach (var type in type2.Damage_Relations.Half_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Double_Damage_To.Count > 0 || type2.Damage_Relations.Double_Damage_To.Count > 0)
+        {
+            <h1>Double Damage To</h1>
+            foreach (var type in type1.Damage_Relations.Double_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+            foreach (var type in type2.Damage_Relations.Double_Damage_To)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.No_Damage_From.Count > 0 || type2.Damage_Relations.No_Damage_From.Count > 0)
+        {
+            <h1>No Damage From</h1>
+            foreach (var type in type1.Damage_Relations.No_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+            foreach (var type in type2.Damage_Relations.No_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Half_Damage_From.Count > 0 || type2.Damage_Relations.Half_Damage_From.Count > 0)
+        {
+            <h1>Half Damage From</h1>
+            foreach (var type in type1.Damage_Relations.Half_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+            foreach (var type in type2.Damage_Relations.Half_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
+        if (type1.Damage_Relations.Double_Damage_From.Count > 0 || type2.Damage_Relations.Double_Damage_From.Count > 0)
+        {
+            <h1>Double Damage From</h1>
+            foreach (var type in type2.Damage_Relations.Double_Damage_From)
+            {
+                <h1> @type.Name </h1>
+            }
+        }
+
     }
 
 
     /*PokeApiClient pokeClient = new PokeApiClient();
-     * 
+     */
     int IVH = rand.Next(0,31);
     int EV = rand.Next(0,255);
     int level = rand.Next(1,100);

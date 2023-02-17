@@ -88,18 +88,6 @@ namespace Poke_Adventures.Models
         public Common Type { get; set; }
     }
 
-    public class MoveProp
-    {
-        [JsonPropertyName("move")]
-        public Common Move { get; set; }
-    }
-
-    public class MoveProp
-    {
-        [JsonPropertyName("move")]
-        public Common Move { get; set; }
-    }
-
     public class Common
     {
         [JsonPropertyName("name")]
