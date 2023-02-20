@@ -25,6 +25,35 @@ namespace Poke_Adventures.Controllers
         {
             return View();
         }
+        public IActionResult Main()
+        {
+            return View();
+        }
+
+        public IActionResult Battle()
+        {
+            return View();
+        }
+
+        public IActionResult Jungle()
+        {
+            return View();
+        }
+
+        public IActionResult Training()
+        {
+            return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
