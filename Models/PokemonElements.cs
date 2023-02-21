@@ -8,7 +8,22 @@ namespace Poke_Adventures.Models
     public class PokemonElements
     {
         [JsonPropertyName("abilities")]
-         public List<AbilityProp> Abilities { get; set; }
+        public List<AbilityProp> Abilities { get; set; }
+
+        [JsonPropertyName("base_experience")]
+        public int base_experience { get; set; }
+
+        [JsonPropertyName("moves")]
+        public List<MoveProp> Moves { get; set; }
+
+        [JsonPropertyName("sprites")]
+        public SpritesProp Sprites { get; set; }
+
+        [JsonPropertyName("stats")]
+        public List<StatsProp> Stats { get; set; }
+
+        [JsonPropertyName("types")]
+        public List<TypesProp> Types { get; set; }
 
         [JsonPropertyName("name")]
         public string? Name { get; set; }
@@ -24,13 +39,7 @@ namespace Poke_Adventures.Models
         }
     }
 
-        public static PokemonElements LoadAbility(int num)
-        {
-            string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/ability/{num}");
-            PokemonElements pokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
-            return pokemon;
-        }
-    }
+
     public class AbilityProp
     {
         [JsonPropertyName("ability")]
@@ -38,7 +47,7 @@ namespace Poke_Adventures.Models
 
         [JsonPropertyName("is_hidden")]
         public bool IsHidden { get; set; }
-        
+
         [JsonPropertyName("slot")]
         public int Slot { get; set; }
     }
@@ -61,7 +70,7 @@ namespace Poke_Adventures.Models
         public string? Front_Default { get; set; }
 
         [JsonPropertyName("front_female")]
-        public string? Front_Female { get; set; }    
+        public string? Front_Female { get; set; }
     }
 
     public class StatsProp
@@ -80,12 +89,6 @@ namespace Poke_Adventures.Models
         public Common Type { get; set; }
     }
 
-    public class MoveProp
-    {
-        [JsonPropertyName("move")]
-        public Common Move { get; set; }
-    }
-
     public class Common
     {
         [JsonPropertyName("name")]
@@ -93,6 +96,9 @@ namespace Poke_Adventures.Models
 
         [JsonPropertyName("url")]
         public Uri? Url { get; set; }
+
+        [JsonPropertyName("id")]    
+        public int ID { get; set; }
     }
 
 }
