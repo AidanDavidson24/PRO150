@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Main Menu";
+}
+
+
+<div class="card border-dark p-2" style="max-width: 60rem; min-height: 30rem; flex-direction: row;">
+    <div class="p-2" style="">
+        <div>
+            <div class="card border-0 p-2" style="width: 100%; min-height: 24rem; flex-direction: row;">
+                <div>
+                    <img src="~/images/route_1_.png" height="100%" width="100%" />
+                </div>
+                <div class="card border-0 p-2 align-content-center" style="width: 100%;">
+                    <button style="width: 100%; min-height: 5rem;">Team</button>
+                    <div class="card border-0" style="width:100%; flex-direction: row;">
+                        <div>
+                            <div class="card border-0" style="width: 20rem; flex-direction: row;">
+                                <div class="m-2">
+                                    <button style="min-width: 8rem; min-height: 5rem;">PC</button>
+                                </div>
+                                <div class="m-2">
+                                    <button style="min-width: 8rem; min-height: 5rem;">Heal</button>
+                                </div>
+                            </div>
+                            <div class="m-2">
+                                 <form asp-controller="Home" asp-action="Battle">
+                                    <button style="min-width: 17rem; min-height: 5rem;">Pool</button>
+                                </form>
+                            </div>
+                            <div class="m-2">
+                                <form asp-controller="Home" asp-action="Training">
+                                    <button style="min-width: 17rem; min-height: 5rem;">Train</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="m-2">
+                                <form asp-controller="Home" asp-action="Jungle">
+                                    <button style="min-width: 17rem; min-height: 5rem;">Jungle Zone</button>
+                                </form>
+                            </div>
+                            <div class="m-2">
+                                <form asp-controller="Home" asp-action="Battle">
+                                    <button style="min-width: 17rem; min-height: 5rem;">Gym</button>
+                                </form>
+                            </div>
+                            <div class="m-2">
+                                <button style="min-width: 17rem; min-height: 5rem;">Settings</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <button style="min-width: 100%; min-height: 5rem;">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
