@@ -1,9 +1,13 @@
 ﻿@{
-    Random rand = new Random();
-    //int PKID = rand.Next(1,1080);
     int PKID = 1;
 
-    if (true)
+    TrainerModel TModel = new TrainerModel();
+
+    <h1>@TModel.AddPokemon()[0].Name</h1>
+
+        //PokemonModel.AttackDamage();
+            /*
+    if(PokemonElements.LoadPokemon(PKID).Types.Count == 2)
     {
         PokemonElements pokemon = PokemonElements.LoadPokemon(PKID);
 
@@ -184,15 +188,11 @@
 
     }
 
-
-    /*PokeApiClient pokeClient = new PokeApiClient();
-     */
-    int IVH = rand.Next(0,31);
-    int EV = rand.Next(0,255);
-    int level = rand.Next(1,100);
-    int HP = 1;
+    
 
     //Gets the first move in the list of moves a pokemon can learn
     //(PokemonElements.LoadPokemon(PKID).Moves[0].Move)
 
 }
+
+<button name="attack" type="button" id="attack" >Attack</button>

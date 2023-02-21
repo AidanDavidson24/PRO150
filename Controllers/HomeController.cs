@@ -7,7 +7,6 @@ namespace Poke_Adventures.Controllers
 {
     public class HomeController : Controller
     {
-        PokemonElements PK;
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
@@ -17,7 +16,16 @@ namespace Poke_Adventures.Controllers
 
         public IActionResult Index()
         {
-            //PK.Name;
+            return View();
+        }
+
+        public IActionResult Damage(string button)
+        {
+            if(button == "attack")
+            {
+                PokemonModel.AttackDamage(2,1);
+            }
+
             return View();
         }
 

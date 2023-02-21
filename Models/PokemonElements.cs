@@ -8,7 +8,10 @@ namespace Poke_Adventures.Models
     public class PokemonElements
     {
         [JsonPropertyName("abilities")]
-         public List<AbilityProp> Abilities { get; set; }
+        public List<AbilityProp> Abilities { get; set; }
+
+        [JsonPropertyName("base_experience")]
+        public int base_experience { get; set; }
 
         [JsonPropertyName("base_experience")]
         public int baseEXP { get; set; }
@@ -38,6 +41,7 @@ namespace Poke_Adventures.Models
             return pokemon;
         }
     }
+
 
     public class AbilityProp
     {
@@ -69,7 +73,7 @@ namespace Poke_Adventures.Models
         public string? Front_Default { get; set; }
 
         [JsonPropertyName("front_female")]
-        public string? Front_Female { get; set; }    
+        public string? Front_Female { get; set; }
     }
 
     public class StatsProp
@@ -95,6 +99,9 @@ namespace Poke_Adventures.Models
 
         [JsonPropertyName("url")]
         public Uri? Url { get; set; }
+
+        [JsonPropertyName("id")]    
+        public int ID { get; set; }
     }
 
 }
