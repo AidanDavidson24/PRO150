@@ -1,13 +1,17 @@
 ﻿@{
-    PokemonElements PKE = new PokemonElements();
     Random rand = new Random();
     //int PKID = rand.Next(1,1080);
     int PKID = 1;
-    
-    <h1>@PokemonElements.LoadPokemon(PKID).Name</h1>
-    <h1>@PokemonElements.LoadPokemon(PKID).Abilities[0].Ability.Name</h1>
-    <h1>@PokemonModel.MakePokemon(PKID)[0].ToString() HP</h1>
-    <img src="@PokemonElements.LoadPokemon(PKID).Sprites.Front_Default"/>
+
+    HttpClient client = new HttpClient();
+    client.BaseAddress = new Uri("https://pokeapi.co/api/v2/pokemon/");
+
+    var PK = await client.GetAsync(PKID.ToString());
+
+    if (PK.IsSuccessStatusCode)
+    {
+        <h1>@PokemonElements.LoadPokemon(PKID).Name</h1>
+        <h1>@PokemonElements.LoadPokemon(PKID).Abilities[0].Ability.Name</h1>
 
     if(PokemonElements.LoadPokemon(PKID).Types.Count == 2)
     {
@@ -18,9 +22,14 @@
     {
         <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
     }
-    <h1>@PokemonElements.LoadPokemon(PKID).Moves[2].Move.Name</h1>
-    <h1>@PokemonModel.AttackDamage(MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[2].Move).ID, PKID)</h1>
-    //<h1>@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[1].Move).Power</h1>
+
+
+    /*PokeApiClient pokeClient = new PokeApiClient();
+
+    int IVH = rand.Next(0,31);
+    int EV = rand.Next(0,255);
+    int level = rand.Next(1,100);
+    int HP = 1;
 
     //Gets the first move in the list of moves a pokemon can learn
     //(PokemonElements.LoadPokemon(PKID).Moves[0].Move)

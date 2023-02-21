@@ -10,21 +10,6 @@ namespace Poke_Adventures.Models
         [JsonPropertyName("abilities")]
          public List<AbilityProp> Abilities { get; set; }
 
-        [JsonPropertyName("base_experience")]
-        public int baseEXP { get; set; }
-
-        [JsonPropertyName("moves")]
-        public List<MoveProp> Moves { get; set; }
-
-        [JsonPropertyName("sprites")]
-        public SpritesProp Sprites { get; set; }
-
-        [JsonPropertyName("stats")]
-        public List<StatsProp> Stats { get; set; }
-
-        [JsonPropertyName("types")]
-        public List<TypesProp> Types { get; set; }
-
         [JsonPropertyName("name")]
         public string? Name { get; set; }
 
@@ -39,43 +24,13 @@ namespace Poke_Adventures.Models
         }
     }
 
-    public class MoveElements
-    {
-        [JsonPropertyName("accuracy")]
-        public int? Accuracy { get; set; }
-
-        [JsonPropertyName("power")]
-        public int? Power { get; set; }
-
-        [JsonPropertyName("pp")]
-        public int PP { get; set; }
-
-        [JsonPropertyName("type")]
-        public Common Type { get; set; }
-
-        [JsonPropertyName("damage_class")]
-        public Common Damage_Class { get; set; }
-
-        [JsonPropertyName("id")]
-        public int ID { get; set; }
-
-        [JsonPropertyName("effect_entries")]
-        public List<EffectProp> Effect_Entries { get; set; }
-
-        public static MoveElements LoadMove(Common move)
+        public static PokemonElements LoadAbility(int num)
         {
-            string json = new WebClient().DownloadString(move.Url);
-            MoveElements moveElements = JsonConvert.DeserializeObject<MoveElements>(json);
-            return moveElements;
+            string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/ability/{num}");
+            PokemonElements pokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
+            return pokemon;
         }
     }
-
-    public class EffectProp
-    {
-        [JsonPropertyName("effect")]
-        public string Effect { get; set; }
-    }
-
     public class AbilityProp
     {
         [JsonPropertyName("ability")]
@@ -123,6 +78,12 @@ namespace Poke_Adventures.Models
     {
         [JsonPropertyName("type")]
         public Common Type { get; set; }
+    }
+
+    public class MoveProp
+    {
+        [JsonPropertyName("move")]
+        public Common Move { get; set; }
     }
 
     public class Common
