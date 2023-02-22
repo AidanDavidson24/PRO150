@@ -5,6 +5,19 @@ using System.Text.Json.Serialization;
 namespace Poke_Adventures.Models
 {
     //ALL VARIABLES MUST BE NAMED THE SAME AS THE JSON PROPERTY
+    public class Pokemon
+    {
+        [JsonPropertyName("results")]
+        public List<Common> Results {get; set;}
+
+        public static Pokemon LoadAllPokemon()
+        {
+            string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/pokemon/?limit=1008\"");
+            Pokemon pokemon = JsonConvert.DeserializeObject<Pokemon>(json);
+            return pokemon;
+        }
+    }
+
     public class PokemonElements
     {
         [JsonPropertyName("abilities")]
@@ -41,7 +54,11 @@ namespace Poke_Adventures.Models
             return pokemon;
         }
     }
+    
+    public class PokemonProp
+    {
 
+    }
 
     public class AbilityProp
     {

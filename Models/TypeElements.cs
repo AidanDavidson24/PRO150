@@ -40,4 +40,6 @@ namespace Poke_Adventures.Models
         [JsonPropertyName("double_damage_from")]
         public List<Common> Double_Damage_From { get; set; }
     }
+
+
 }
