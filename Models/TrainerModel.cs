@@ -4,26 +4,11 @@ namespace Poke_Adventures.Models
 {
     public class TrainerModel
     {
-        public static PokemonElements PKE = new PokemonElements();
+        // pk team
 
-        public List<int> PokemonStats()
-        {
-            
-            List<int> pokemon = PokemonModel.MakePokemon(1);
-            return pokemon;
-        }
 
-        public PokemonElements Pokemon()
-        {
-            var PK = PokemonElements.LoadPokemon(1);
-            return PK;
-        }
+        // randomize team based on difficulty
 
-        public List<Common> AddPokemon()
-        {
-            List<Common> pokemonParty = new List<Common>();
-
-            return pokemonParty;
-        }
+        // 
     }
 }
