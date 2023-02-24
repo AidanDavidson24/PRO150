@@ -20,7 +20,6 @@
         {
             List<int> stats = new List<int>();
 
-
             HP = ((2 * PokemonElements.LoadPokemon(ID).Stats[0].Base_Stat + IV + (EV / 4) * level) / 100) + level + 10;
             ATK = ((2 * PokemonElements.LoadPokemon(ID).Stats[1].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
             DEF = ((2 * PokemonElements.LoadPokemon(ID).Stats[2].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
