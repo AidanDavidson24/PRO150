@@ -47,17 +47,18 @@ namespace Poke_Adventures.Models
         [JsonPropertyName("url")]
         public Uri? Url { get; set; }
 
+        //public static PokemonElements LoadPokemon(Common pokemon)
+        //{
+        //    string json = new WebClient().DownloadString(pokemon.Url);
+        //    PokemonElements PEpokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
+        //    return PEpokemon;
+        //}
         public static PokemonElements LoadPokemon(int num)
         {
             string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/pokemon/{num}");
-            PokemonElements pokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
-            return pokemon;
+            PokemonElements PEpokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
+            return PEpokemon;
         }
-    }
-    
-    public class PokemonProp
-    {
-
     }
 
     public class AbilityProp

@@ -39,6 +39,9 @@ namespace Poke_Adventures.Models
 
         [JsonPropertyName("type")]
         public Common Type { get; set; }
+
+        [JsonPropertyName("flavor_text_entries")]
+        public List<FlavorTextProp> Flavor_Text_Entries { get; set; }
     }
 
     public class EffectProp
@@ -84,5 +87,11 @@ namespace Poke_Adventures.Models
 
         [JsonPropertyName("stat_chance")]
         public int Stat_Chance { get; set; }
+    }
+
+    public class FlavorTextProp
+    {
+        [JsonPropertyName("flavor_text")]
+        public string Flavor_Text { get; set; }
     }
 }
