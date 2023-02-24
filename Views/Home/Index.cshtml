@@ -1,4 +1,19 @@
 ﻿@{
+    var pokemon = Pokemon.LoadAllPokemon();
+
+
+    foreach (var poke in PlayerModel.PlayerTeam)
+    {
+        foreach (var mans in pokemon.Results)
+        {
+            if (mans.Name == poke)
+            {
+                <h1> @mans.Name</h1>
+                <h1> @mans.Url</h1>
+            }
+        }
+    }
+
     //int PKID = 1;
 
 

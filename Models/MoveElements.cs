@@ -37,6 +37,9 @@ namespace Poke_Adventures.Models
         [JsonPropertyName("meta")]
         public MetaProp Meta { get; set; }
 
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+
         [JsonPropertyName("type")]
         public Common Type { get; set; }
     }

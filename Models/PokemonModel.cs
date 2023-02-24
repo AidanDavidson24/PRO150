@@ -2,22 +2,24 @@
 {
     public class PokemonModel
     {
+        public static int bulbHP = Pokemon.GetBulbHP();
+        public static int? charHP = Pokemon.GetCharHP();
+
+        static Random randStat = new Random();
         public static int HP;
         public static int ATK;
         public static int DEF;
         public static int SPA;
         public static int SPD;
         public static int SPE;
-        private static int IV;
-        private static int EV;
+        private static int IV = randStat.Next(0,31);
+        private static int EV = randStat.Next(0,255);
         public static int level = 100;
-        static Random randStat = new Random();
 
         public static List<int> MakePokemon(int ID)
         {
             List<int> stats = new List<int>();
-            IV = randStat.Next(0, 31);
-            EV = randStat.Next(0, 255);
+
 
             HP = ((2 * PokemonElements.LoadPokemon(ID).Stats[0].Base_Stat + IV + (EV / 4) * level) / 100) + level + 10;
             ATK = ((2 * PokemonElements.LoadPokemon(ID).Stats[1].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
@@ -44,24 +46,26 @@
             float STAB = 1;
             float? critDamage = crit;
 
-            if((float)rand.NextDouble() >= 1 / 24)
+            if ((float)rand.NextDouble() >= 1 / 24)
             {
                 crit = 1.5f;
             }
-            
+
             if (PokemonElements.LoadPokemon(PKID).Types[0].Type == MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Type || PokemonElements.LoadPokemon(PKID).Types[1].Type == MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Type)
             {
                 STAB = 1.5f;
             }
-            
+
 
             if (MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Damage_Class.Name == "physical")
             {
-                Damage = Convert.ToInt32(Math.Floor((decimal)(((((((2 / level) / 5) + 2) * Power * (MakePokemon(PKID)[1] / 10)) / 50) + 2) * critDamage * rand.Next(85,100) / 100 * STAB)));
-            } else if (MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Damage_Class.Name == "special")
+                Damage = Convert.ToInt32(Math.Floor((decimal)(((((((2 / level) / 5) + 2) * Power * (MakePokemon(PKID)[1] / 10)) / 50) + 2) * critDamage * rand.Next(85, 100) / 100 * STAB)));
+            }
+            else if (MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[MoveID].Move).Damage_Class.Name == "special")
             {
                 Damage = Convert.ToInt32(Math.Floor((decimal)(((((((2 / level) / 5) + 2) * Power * (31 / 10)) / 50) + 2) * critDamage * rand.Next(85, 100) / 100 * STAB)));
-            } else
+            }
+            else
             {
                 Damage = 0;
             }

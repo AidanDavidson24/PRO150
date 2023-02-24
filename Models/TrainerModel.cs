@@ -1,11 +1,12 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿
 
 namespace Poke_Adventures.Models
 {
     public class TrainerModel
     {
         public static PokemonElements PKE = new PokemonElements();
-
+        
+        /*
         public List<int> PokemonStats()
         {
             
@@ -19,11 +20,11 @@ namespace Poke_Adventures.Models
             return PK;
         }
 
-        public List<Common> AddPokemon()
+        public List<Common> Pokemon(Common common)
         {
             List<Common> pokemonParty = new List<Common>();
 
             return pokemonParty;
-        }
+        }*/
     }
 }

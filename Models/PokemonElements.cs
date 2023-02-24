@@ -1,17 +1,46 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Net;
 using System.Text.Json.Serialization;
 
 namespace Poke_Adventures.Models
 {
     //ALL VARIABLES MUST BE NAMED THE SAME AS THE JSON PROPERTY
+    public class Pokemon
+    {
+        [JsonPropertyName("results")]
+        public List<Common> Results { get; set; }
+
+        public static Pokemon LoadAllPokemon()
+        {
+            string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/pokemon/?limit=1008\"");
+            Pokemon pokemon = JsonConvert.DeserializeObject<Pokemon>(json);
+            return pokemon;
+        }
+
+        public static int GetBulbHP()
+        {
+            //int bulbHP = PokemonModel.MakePokemon(1)[1];
+            int bulbHP = 30;
+            return bulbHP;
+        }
+        public static int GetCharHP()
+        {
+            //int charHP = PokemonModel.MakePokemon(4)[1];
+            int charHP = 30;
+            return charHP;
+        }
+    }
+
+
+
     public class PokemonElements
     {
         [JsonPropertyName("abilities")]
         public List<AbilityProp> Abilities { get; set; }
 
         [JsonPropertyName("base_experience")]
-        public int base_experience { get; set; }
+        public float? base_experience { get; set; }
 
         [JsonPropertyName("moves")]
         public List<MoveProp> Moves { get; set; }
