@@ -2,23 +2,23 @@
     int PKID = 1;
 
     var pokemon = Pokemon.LoadAllPokemon();
-    
 
-    foreach (var poke in PlayerModel.PlayerTeam)
+    PlayerModel.AddPokemon("voltorb", 20);
+    PlayerModel.AddPokemon("miltank", 20);
+
+
+    if (PlayerModel.PlayerTeam.Count > 0)
     {
-        foreach (var mans in pokemon.Results)
+        TrainerModel.RandomizeTeam("Hard");
+
+        foreach (var mons in TrainerModel.TrainerTeam)
         {
-            if (mans.Name == poke)
-            {
-                <h1> @mans.Name</h1>
-                <h1> @mans.Url</h1>
-            }
+            <h1>@mons.Name</h1>
+            <h1>@mons.Level</h1>
         }
     }
+        
     
-
-    
-
     /*
     //PokemonModel.AttackDamage();
     if(PokemonElements.LoadPokemon(PKID).Types.Count == 2)
