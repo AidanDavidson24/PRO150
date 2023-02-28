@@ -3,14 +3,21 @@
 
     var pokemon = Pokemon.LoadAllPokemon();
 
-    PlayerModel.AddPokemon("voltorb", 20);
-    PlayerModel.AddPokemon("miltank", 20);
-
+    PlayerModel.AddPokemon("voltorb", 5);
+    PlayerModel.AddPokemon("miltank", 5);
 
     if (PlayerModel.PlayerTeam.Count > 0)
     {
-        TrainerModel.RandomizeTeam("Hard");
+        <h1>Player Team</h1>
+        foreach (var mons in PlayerModel.PlayerTeam)
+        {
+            <h1>@mons.Name</h1>
+            <h1>@mons.Level</h1>
+        }
 
+        <br>
+        TrainerModel.RandomizeTeam("Hard");
+        <h1>Trainer Team</h1>
         foreach (var mons in TrainerModel.TrainerTeam)
         {
             <h1>@mons.Name</h1>
@@ -20,19 +27,6 @@
         
     
     /*
-    //PokemonModel.AttackDamage();
-    if(PokemonElements.LoadPokemon(PKID).Types.Count == 2)
-        {
-        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
-        <h1>@PokemonElements.LoadPokemon(PKID).Types[1].Type.Name</h1>
-
-        //TwoTypeWAS(@PokemonElements.LoadPokemon(PKID));
-    }
-        else
-        {
-        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
-    }
-
     void OneTypeWAS(PokemonElements pokemon)
         {
         TypeElements type1 = TypeElements.LoadType(pokemon.Types[0].Type);
@@ -175,8 +169,5 @@
     }
 
     }
-
-    //Gets the first move in the list of moves a pokemon can learn
-    //(PokemonElements.LoadPokemon(PKID).Moves[0].Move)
     */
 }

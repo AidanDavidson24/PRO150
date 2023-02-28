@@ -14,22 +14,22 @@ namespace Poke_Adventures.Models
             switch(difficulty)
             {
                 case "Easy":
-                    min = PlayerModel.avglvl - 3;
-                    max = PlayerModel.avglvl + 2;
+                    min = PlayerModel.GetAverageLevel() - 3;
+                    max = PlayerModel.GetAverageLevel() + 2;
                     // pool = player pool
                     RandomPokemon(min, max);
                     break;
 
                 case "Medium":
-                    min = PlayerModel.avglvl;
-                    max = PlayerModel.avglvl + 5;
+                    min = PlayerModel.GetAverageLevel();
+                    max = PlayerModel.GetAverageLevel() + 5;
                     // pool = player pool
                     RandomPokemon(min, max);
                     break;
 
                 case "Hard":
-                    min = PlayerModel.avglvl + 1;
-                    max = PlayerModel.avglvl + 8;
+                    min = PlayerModel.GetAverageLevel() + 1;
+                    max = PlayerModel.GetAverageLevel() + 8;
                     // pool = player pool + 1
                     RandomPokemon(min, max);
                     break;
@@ -49,7 +49,6 @@ namespace Poke_Adventures.Models
                 int level = rand.Next(lvlMin, lvlMax);
                 var pokemonIndex = rand.Next(allPokemon.Results.Count);
                 var pokemonName = PokemonElements.LoadPokemon(pokemonIndex);
-
 
                 CharacterPokemon pokemon = new CharacterPokemon(pokemonName.Name, level);
 

@@ -4,21 +4,19 @@
     {
         public static List<CharacterPokemon> PlayerTeam = new List<CharacterPokemon> { };
 
-        public static int avglvl = GetAverageLevel();
-
         public static void AddPokemon(string name, int lvl)
         {
-            CharacterPokemon mon = new CharacterPokemon(name, lvl);
+            CharacterPokemon pokemon = new CharacterPokemon(name, lvl);
 
-            PlayerTeam.Add(mon);
+            PlayerTeam.Add(pokemon);
         }
 
         public static int GetAverageLevel()
         {
             int averagelvl = 0;
-            for (int i = 1; i < PlayerTeam.Count; i++)
+            for (int i = 0; i < PlayerTeam.Count; i++)
             {
-                averagelvl += PlayerTeam[i - 1].Level;
+                averagelvl += PlayerTeam[i].Level;
             }
             
             return averagelvl / PlayerTeam.Count;
