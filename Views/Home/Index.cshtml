@@ -1,6 +1,7 @@
 ﻿@{
     var pokemon = Pokemon.LoadAllPokemon();
-
+    var location = LoadLocation.LoadAllLocations();
+    Random rand = new Random();
 
     foreach (var poke in PlayerModel.PlayerTeam)
     {
@@ -12,7 +13,27 @@
                 <h1> @mans.Url</h1>
             }
         }
+    }/*
+    foreach (var poke in PlayerModel.Routes)
+    {
+        foreach (var mans in location.Results)
+        {
+    if (mans.Name == poke)
+    {
+        <h1> @mans.Name</h1>
+        <h1> @mans.Url</h1>
     }
+        }
+    }
+
+    */
+
+
+    var location1 = LocationElements.LoadLocation(PlayerModel.ActiveRoute()[0]).Areas[0];
+
+    <h1>@LocationAreaElements.LoadLocationArea(location1).Pokemon_Encounters[0].Pokemon.Name</h1>
+
+    <h1>@PlayerModel.ActiveRoute()[0].Url</h1>
 
     //int PKID = 1;
 

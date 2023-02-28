@@ -18,16 +18,17 @@ namespace Poke_Adventures.Models
             return pokemon;
         }
 
-        public static int GetBulbHP()
+        public static int? GetEnemyHP()
         {
-            //int bulbHP = PokemonModel.MakePokemon(1)[1];
-            int bulbHP = 30;
+            int bulbHP = PokemonModel.MakePokemon(PlayerModel.Team()[1])[0];
+            System.Diagnostics.Debug.WriteLine(bulbHP + " Max HP");
+            //int? bulbHP = 30;
             return bulbHP;
         }
-        public static int GetCharHP()
+        public static int? GetPlayerHP()
         {
-            //int charHP = PokemonModel.MakePokemon(4)[1];
-            int charHP = 30;
+            int charHP = PokemonModel.MakePokemon(PlayerModel.Team()[0])[0];
+            //int? charHP = 30;
             return charHP;
         }
     }
@@ -52,19 +53,22 @@ namespace Poke_Adventures.Models
         public List<StatsProp> Stats { get; set; }
 
         [JsonPropertyName("types")]
-        public List<TypesProp> Types { get; set; }
+        public List<TypesProp>? Types { get; set; }
 
         [JsonPropertyName("name")]
         public string? Name { get; set; }
+        
+        [JsonPropertyName("species")]
+        public Common Species { get; set; }
 
         [JsonPropertyName("url")]
         public Uri? Url { get; set; }
 
-        public static PokemonElements LoadPokemon(int num)
+        public static PokemonElements LoadPokemon(Common pokemon)
         {
-            string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/pokemon/{num}");
-            PokemonElements pokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
-            return pokemon;
+            string json = new WebClient().DownloadString(pokemon.Url);
+            PokemonElements PEpokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
+            return PEpokemon;
         }
     }
 
@@ -115,7 +119,9 @@ namespace Poke_Adventures.Models
     public class TypesProp
     {
         [JsonPropertyName("type")]
-        public Common Type { get; set; }
+        public Common? Type { get; set; }
+        [JsonPropertyName("slot")]
+        public int slot { get; set; }
     }
 
     public class Common
@@ -128,6 +134,20 @@ namespace Poke_Adventures.Models
 
         [JsonPropertyName("id")]    
         public int ID { get; set; }
+    }
+
+    public class SpeciesProp
+    {
+        public static SpeciesProp LoadSpecies(Common species)
+        {
+            string json = new WebClient().DownloadString(species.Url);
+            SpeciesProp pokemon = JsonConvert.DeserializeObject<SpeciesProp>(json);
+            return pokemon;
+        }
+
+        [JsonPropertyName("capture_rate")]
+        public int Capture_Rate { get; set; }
+
     }
 
 }
