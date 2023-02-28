@@ -1,11 +1,87 @@
 ﻿@{
     ViewData["Title"] = "Jungle";
+    Common PKID = PlayerModel.Team()[0];
+    float? perc = (float?)(PokemonModel.EnemyHP * 100 / 30);
+    float? perc2 = (float?)(PokemonModel.PlayerHP * 100 / 30);
+    
 }
 
-<div class="flex-row">
-        <div class="card border-dark p-2" style="max-width: 100rem; min-height: 50rem; flex-direction: row">
-            <div class="card border-dark p-2" style=" max-width: 25rem; min-width: 20rem; min-height: 10rem; max-height: 20rem;">
-            </div>
-            <div class="card border-dark p-2" style="max-width: 60rem; min-width: 30rem; min-height: 20rem; max-height: 28rem; margin-left: 30rem"></div>
+<div class="card border-dark p-2" style="max-width: 60rem; min-height: 30rem;">
+    <div class="p-3">
+        <div class="card-img-overlay" style="margin-left: 36rem; margin-top: 10rem;">
+            <img src="@PokemonElements.LoadPokemon(PlayerModel.WildPK).Sprites.Front_Default" height="235" width="235" />
         </div>
+        <div class="card-img-overlay" style="margin-left: 6rem; margin-top: 19rem;">
+            <img src="@PokemonElements.LoadPokemon(PKID).Sprites.Back_Default" height="335" width="335" />
+        </div>
+        <img src="~/images/field.png" height="100%" width="100%" />
+    </div>
+    <div class="card-img-overlay" style="width: 15rem; margin-left: 1rem; margin-top: 1rem;">
+        <div class="border bg-white p-2">
+            <h3>@PokemonElements.LoadPokemon(PlayerModel.WildPK).Name</h3>
+            <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" width="5rem" style="max-width: 100%; width: @perc%" aria-valuenow="@PokemonModel.EnemyHP" aria-valuemax="@PokemonModel.EnemyHP">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-img-overlay" style="width: 15rem; margin-top: 29.25rem; margin-left: 44rem ">
+        <div class="border bg-white p-2">
+            <h3>@PokemonElements.LoadPokemon(PKID).Name</h3>
+            <div class="progress">
+                <div class="progress-bar bg-danger" role="progressbar" width="5rem" style="max-width: 100%; width: @perc2%" aria-valuenow="@PokemonModel.PlayerHP" aria-valuemax="@PokemonModel.PlayerHP">
+                    @PokemonModel.PlayerHP
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<form asp-controller="Home" asp-action="Jungle" method="post">
+    <div class="card border-dark" style="max-width: 60rem; min-height: 10rem; flex-direction: row">
+        <div class="card border-dark" style="min-width: 40rem; min-height: 9rem;">
+            @*Input move information here*@
+        </div>
+        <div class="card border-dark" style="min-width: 20rem; min-height: 9rem;">
+            <div class="card border-0" style="min-width:19.5rem; min-height:8.5rem; flex-direction: row">
+                <div class="m-1">
+                    <button type="submit" onclick="Damage()" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[0].Move).Name</button>
+                </div>
+                <div class="m-1">
+                    <button type="submit" onclick="Damage()" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[1].Move).Name</button>
+                </div>
+                <div>
+                </div>
+                <div class="m-1">
+                    <button type="submit" onclick="Damage()" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[2].Move).Name</button>
+                </div>
+                <div class="m-1">
+                    <button type="submit" onclick="Damage()" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[3].Move).Name</button>
+                </div>
+                <div class="m-1">
+                    <button type="submit" onclick="Catch" style="height: 4.5rem; width: 9.5rem;">Catch</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function Damage()
+    {
+        
+    @{  
+        PokemonModel.EnemyHP = AttackFunction.Attack(PokemonModel.EnemyHP);
+
+    }
+    }
+
+    function Catch()
+    {
+    @{
+        var bo = PokemonModel.CatchPokemon();
+
+        System.Diagnostics.Debug.WriteLine(bo);
+    }
+    }
+</script>

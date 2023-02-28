@@ -3,6 +3,7 @@ using Poke_Adventures.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Reflection.Emit;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
@@ -18,14 +19,13 @@ namespace Poke_Adventures.Controllers
             _logger = logger;
         }
 
-        public ActionResult Attack()
+        public IActionResult Attack()
         {
             return View("Battle");
         }
 
         public IActionResult Index()
         {
-            //PK.Name;
             return View();
         }
 
@@ -37,9 +37,10 @@ namespace Poke_Adventures.Controllers
         {
             return View();
         }
-
-        public IActionResult Battle()
+        [HttpPost]
+        public ActionResult Battle(string Move1)
         {
+            AttackFunction.ApplyDamage();
             return View();
         }
 

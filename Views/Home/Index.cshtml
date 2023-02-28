@@ -5,6 +5,8 @@
 
     PlayerModel.AddPokemon("voltorb", 5);
     PlayerModel.AddPokemon("miltank", 5);
+    var location = LoadLocation.LoadAllLocations();
+    Random rand = new Random();
 
     if (PlayerModel.PlayerTeam.Count > 0)
     {
@@ -23,8 +25,44 @@
             <h1>@mons.Name</h1>
             <h1>@mons.Level</h1>
         }
+    }/*
+    foreach (var poke in PlayerModel.Routes)
+    {
+        foreach (var mans in location.Results)
+        {
+    if (mans.Name == poke)
+    {
+        <h1> @mans.Name</h1>
+        <h1> @mans.Url</h1>
     }
         
+        }
+    }
+
+    */
+
+
+    var location1 = LocationElements.LoadLocation(PlayerModel.ActiveRoute()[0]).Areas[0];
+
+    <h1>@LocationAreaElements.LoadLocationArea(location1).Pokemon_Encounters[0].Pokemon.Name</h1>
+
+    <h1>@PlayerModel.ActiveRoute()[0].Url</h1>
+
+    //int PKID = 1;
+
+
+        //PokemonModel.AttackDamage();
+            /*
+    if(PokemonElements.LoadPokemon(PKID).Types.Count == 2)
+    {
+        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
+        <h1>@PokemonElements.LoadPokemon(PKID).Types[1].Type.Name</h1>
+    }
+    else
+    {
+        <h1>@PokemonElements.LoadPokemon(PKID).Types[0].Type.Name</h1>
+    }*/
+
     
     /*
     void OneTypeWAS(PokemonElements pokemon)
