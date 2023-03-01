@@ -1,6 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Jungle";
-    Common PKID = PlayerModel.Team()[0];
+    string PKID = PlayerModel.PlayerTeam[0].Name;
     float? perc = (float?)(PokemonModel.EnemyHP * 100 / 30);
     float? perc2 = (float?)(PokemonModel.PlayerHP * 100 / 30);
     
@@ -9,7 +9,7 @@
 <div class="card border-dark p-2" style="max-width: 60rem; min-height: 30rem;">
     <div class="p-3">
         <div class="card-img-overlay" style="margin-left: 36rem; margin-top: 10rem;">
-            <img src="@PokemonElements.LoadPokemon(PlayerModel.WildPK).Sprites.Front_Default" height="235" width="235" />
+            <img src="@PokemonElements.LoadPokemon(Routes.WildPK).Sprites.Front_Default" height="235" width="235" />
         </div>
         <div class="card-img-overlay" style="margin-left: 6rem; margin-top: 19rem;">
             <img src="@PokemonElements.LoadPokemon(PKID).Sprites.Back_Default" height="335" width="335" />
@@ -18,7 +18,7 @@
     </div>
     <div class="card-img-overlay" style="width: 15rem; margin-left: 1rem; margin-top: 1rem;">
         <div class="border bg-white p-2">
-            <h3>@PokemonElements.LoadPokemon(PlayerModel.WildPK).Name</h3>
+            <h3>@PokemonElements.LoadPokemon(Routes.WildPK).Name</h3>
             <div class="progress">
                 <div class="progress-bar bg-danger" role="progressbar" width="5rem" style="max-width: 100%; width: @perc%" aria-valuenow="@PokemonModel.EnemyHP" aria-valuemax="@PokemonModel.EnemyHP">
                 </div>
