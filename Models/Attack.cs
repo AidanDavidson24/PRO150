@@ -8,7 +8,7 @@
         {
             int? currentHP = curHP;
 
-            int? damage = PokemonModel.AttackDamage(MoveElements.LoadMove(PokemonElements.LoadPokemon(PlayerModel.PlayerTeam[].Name).Moves[0].Move).ID, PlayerModel.PlayerTeam[0].Name, PlayerModel.PlayerTeam[1].Name);
+            int? damage = PokemonModel.AttackDamage(MoveElements.LoadMove(PokemonElements.LoadPokemon(PlayerModel.PlayerTeam[0].Name).Moves[0].Move).ID, PlayerModel.PlayerTeam[0].Name, PlayerModel.PlayerTeam[1].Name);
 
             System.Diagnostics.Debug.WriteLine(PokemonModel.AttackDamage(5, PlayerModel.PlayerTeam[0].Name, PlayerModel.PlayerTeam[1].Name) + " Move");
 

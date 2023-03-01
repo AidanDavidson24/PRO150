@@ -8,24 +8,25 @@
     var location = LoadLocation.LoadAllLocations();
     Random rand = new Random();
 
-    if (PlayerModel.PlayerTeam.Count > 0)
-    {
-        <h1>Player Team</h1>
-        foreach (var mons in PlayerModel.PlayerTeam)
-        {
-            <h1>@mons.Name</h1>
-            <h1>@mons.Level</h1>
-        }
+    //if (PlayerModel.PlayerTeam.Count > 0)
+    //{
+    //    <h1>Player Team</h1>
+    //    foreach (var mons in PlayerModel.PlayerTeam)
+    //    {
+    //        <h1>@mons.Name</h1>
+    //        <h1>@mons.Level</h1>
+    //    }
 
-        <br>
-        TrainerModel.RandomizeTeam("Hard");
-        <h1>Trainer Team</h1>
-        foreach (var mons in TrainerModel.TrainerTeam)
-        {
-            <h1>@mons.Name</h1>
-            <h1>@mons.Level</h1>
-        }
-    }/*
+    //    <br>
+    //    TrainerModel.RandomizeTeam("Hard");
+    //    <h1>Trainer Team</h1>
+    //    foreach (var mons in TrainerModel.TrainerTeam)
+    //    {
+    //        <h1>@mons.Name</h1>
+    //        <h1>@mons.Level</h1>
+    //    }
+    //}
+    /*
     foreach (var poke in PlayerModel.Routes)
     {
         foreach (var mans in location.Results)
@@ -35,12 +36,14 @@
         <h1> @mans.Name</h1>
         <h1> @mans.Url</h1>
     }
-        
+
         }
     }
 
     */
-
+   <br />
+    <h1>@Routes.LoadRoute()</h1>
+    <br />
 
     var location1 = LocationElements.LoadLocation(Routes.ActiveRoute()[0]).Areas[0];
 
