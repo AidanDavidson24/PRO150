@@ -46,6 +46,7 @@ namespace Poke_Adventures.Controllers
 
         public IActionResult Jungle()
         {
+            Routes.LoadRoute();
             return View();
         }
 

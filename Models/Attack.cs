@@ -4,11 +4,11 @@
     {
         static bool IsAttack = false;
 
-        public static int? Attack(int? curHP)
+        public static int? Attack(int? curHP, string attackingPokemon, string defendingPokemon, int move)
         {
             int? currentHP = curHP;
 
-            int? damage = PokemonModel.AttackDamage(MoveElements.LoadMove(PokemonElements.LoadPokemon(PlayerModel.PlayerTeam[].Name).Moves[0].Move).ID, PlayerModel.PlayerTeam[0].Name, PlayerModel.PlayerTeam[1].Name);
+            int? damage = PokemonModel.AttackDamage(MoveElements.LoadMove(PokemonElements.LoadPokemon(attackingPokemon).Moves[move].Move).ID, attackingPokemon, defendingPokemon);
 
             System.Diagnostics.Debug.WriteLine(PokemonModel.AttackDamage(5, PlayerModel.PlayerTeam[0].Name, PlayerModel.PlayerTeam[1].Name) + " Move");
 
@@ -58,7 +58,7 @@
             else if(!IsAttack)
             {
                 IsAttack = true;
-                PokemonModel.EnemyHP = Attack(PokemonModel.EnemyHP);
+                //PokemonModel.EnemyHP = Attack(PokemonModel.EnemyHP);
                 return PokemonModel.EnemyHP;
             }
             else
@@ -66,6 +66,13 @@
                 return PokemonModel.EnemyHP;
             }
 
+        }
+
+        public static bool Damage(string PKID, string otherPokemon, int move)
+        {
+            PokemonModel.EnemyHP = AttackFunction.Attack(PokemonModel.EnemyHP, PKID, otherPokemon, move);
+
+            return true;
         }
     }
 }
