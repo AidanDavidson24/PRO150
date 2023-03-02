@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Battle";
-    Common PKID = PlayerModel.Team()[0];
-    Common PKID2 = PlayerModel.Team()[1];
+    string PKID = PlayerModel.PlayerTeam[0].Name;
+    string PKID2 = PlayerModel.PlayerTeam[0].Name;// = //random mon;
     float? perc = (float?)(PokemonModel.EnemyHP * 100 / PokemonModel.MaxEnemyHP);
     float? perc2 = (float?)(PokemonModel.PlayerHP * 100 / PokemonModel.MaxPlayerHP);
 }

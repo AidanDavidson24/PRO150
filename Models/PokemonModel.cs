@@ -18,16 +18,16 @@ namespace Poke_Adventures.Models
 
         public static List<Pokemon> pokemonTeam = new List<Pokemon>();
 
-        public static List<int> MakePokemon(Common ID)
+        public static List<int> MakePokemon(string Name)
         {
             List<int> stats = new List<int>();
 
-            HP = ((2 * PokemonElements.LoadPokemon(ID).Stats[0].Base_Stat + IV + (EV / 4) * level) / 100) + level + 10;
-            ATK = ((2 * PokemonElements.LoadPokemon(ID).Stats[1].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
-            DEF = ((2 * PokemonElements.LoadPokemon(ID).Stats[2].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
-            SPA = ((2 * PokemonElements.LoadPokemon(ID).Stats[3].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
-            SPD = ((2 * PokemonElements.LoadPokemon(ID).Stats[4].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
-            SPE = ((2 * PokemonElements.LoadPokemon(ID).Stats[5].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
+            HP = ((2 * PokemonElements.LoadPokemon(Name).Stats[0].Base_Stat + IV + (EV / 4) * level) / 100) + level + 10;
+            ATK = ((2 * PokemonElements.LoadPokemon(Name).Stats[1].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
+            DEF = ((2 * PokemonElements.LoadPokemon(Name).Stats[2].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
+            SPA = ((2 * PokemonElements.LoadPokemon(Name).Stats[3].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
+            SPD = ((2 * PokemonElements.LoadPokemon(Name).Stats[4].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
+            SPE = ((2 * PokemonElements.LoadPokemon(Name).Stats[5].Base_Stat + IV + (EV / 4) * level) / 100) + 5;
 
             stats.Add(HP);
             stats.Add(ATK);
@@ -38,7 +38,7 @@ namespace Poke_Adventures.Models
             return stats;
         }
 
-        public static int? AttackDamage(int MoveID, Common PKID, Common PKID2)
+        public static int? AttackDamage(int MoveID, string PKID, string PKID2)
         {
             Random rand = new Random();
             float randNum = rand.Next(85, 100);
@@ -102,7 +102,7 @@ namespace Poke_Adventures.Models
 
         public static bool CatchPokemon()
         {
-            int capRate = SpeciesProp.LoadSpecies(PlayerModel.Team()[0]).Capture_Rate;
+            int capRate = SpeciesProp.LoadSpecies(PokemonElements.LoadPokemon(PlayerModel.PlayerTeam[0].Name).Species).Capture_Rate;
             int? catchRate;
 
             System.Diagnostics.Debug.WriteLine(MaxEnemyHP + " Enemy HP");

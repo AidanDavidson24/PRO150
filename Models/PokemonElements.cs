@@ -20,14 +20,14 @@ namespace Poke_Adventures.Models
 
         public static int? GetEnemyHP()
         {
-            int bulbHP = PokemonModel.MakePokemon(PlayerModel.Team()[1])[0];
+            int bulbHP = PokemonModel.MakePokemon(PlayerModel.PlayerTeam[1].Name)[0];
             System.Diagnostics.Debug.WriteLine(bulbHP + " Max HP");
             //int? bulbHP = 30;
             return bulbHP;
         }
         public static int? GetPlayerHP()
         {
-            int charHP = PokemonModel.MakePokemon(PlayerModel.Team()[0])[0];
+            int charHP = PokemonModel.MakePokemon(PlayerModel.PlayerTeam[0].Name)[0];
             //int? charHP = 30;
             return charHP;
         }
@@ -67,18 +67,27 @@ namespace Poke_Adventures.Models
         [JsonPropertyName("url")]
         public Uri? Url { get; set; }
 
-        //public static PokemonElements LoadPokemon(Common pokemon)
-        //{
-        //    string json = new WebClient().DownloadString(pokemon.Url);
-        //    PokemonElements PEpokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
-        //    return PEpokemon;
-        //}
+        public static PokemonElements LoadPokemon(Common pokemon)
+        {
+            string json = new WebClient().DownloadString(pokemon.Url);
+            PokemonElements PEpokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
+            return PEpokemon;
+        }
+
         public static PokemonElements LoadPokemon(int num)
         {
             string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/pokemon/{num}");
             PokemonElements PEpokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
             return PEpokemon;
         }
+        
+        public static PokemonElements LoadPokemon(string name)
+        {
+            string json = new WebClient().DownloadString($"https://pokeapi.co/api/v2/pokemon/{name}");
+            PokemonElements PEpokemon = JsonConvert.DeserializeObject<PokemonElements>(json);
+            return PEpokemon;
+        }
+
     }
 
     public class AbilityProp
