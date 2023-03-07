@@ -18,17 +18,22 @@ namespace Poke_Adventures.Models
             return pokemon;
         }
 
-        public static int? GetEnemyHP()
+        public static int? GetWildHP(string other)
         {
-            int bulbHP = PokemonModel.MakePokemon(PlayerModel.PlayerTeam[1].Name)[0];
+            int WildHP = PokemonModel.MakePokemon(other)[0];
+            System.Diagnostics.Debug.WriteLine(WildHP + " Wild Max HP");
+            return WildHP;
+        }
+
+        public static int? GetEnemyHP(string other)
+        {
+            int bulbHP = PokemonModel.MakePokemon(other)[0];
             System.Diagnostics.Debug.WriteLine(bulbHP + " Max HP");
-            //int? bulbHP = 30;
             return bulbHP;
         }
         public static int? GetPlayerHP()
         {
             int charHP = PokemonModel.MakePokemon(PlayerModel.PlayerTeam[0].Name)[0];
-            //int? charHP = 30;
             return charHP;
         }
     }

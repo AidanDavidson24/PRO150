@@ -18,7 +18,7 @@
             {
                 averagelvl += PlayerTeam[i].Level;
             }
-            
+
             return averagelvl / PlayerTeam.Count;
         }
     }
@@ -33,6 +33,4 @@
         public string Name;
         public int Level;
     }
-
-    
-}
+}   

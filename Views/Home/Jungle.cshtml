@@ -1,16 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Jungle";
     string PKID = PlayerModel.PlayerTeam[0].Name;
-    var otherPokemon = PokemonElements.LoadPokemon(Routes.WildPK);
-    float? perc = (float?)(PokemonModel.EnemyHP * 100 / 30);
-    float? perc2 = (float?)(PokemonModel.PlayerHP * 100 / 30);
+    float? perc = (float?)(PokemonModel.WildHP * 100 / PokemonModel.MaxWildHP);
+    float? perc2 = (float?)(PokemonModel.PlayerHP * 100 / PokemonModel.MaxPlayerHP);
     
 }
 
 <div class="card border-dark p-2" style="max-width: 60rem; min-height: 30rem;">
     <div class="p-3">
         <div class="card-img-overlay" style="margin-left: 36rem; margin-top: 10rem;">
-            <img src="@otherPokemon.Sprites.Front_Default" height="235" width="235" />
+            <img src="@Routes.otherPokemon.Sprites.Front_Default" height="235" width="235" />
         </div>
         <div class="card-img-overlay" style="margin-left: 6rem; margin-top: 19rem;">
             <img src="@PokemonElements.LoadPokemon(PKID).Sprites.Back_Default" height="335" width="335" />
@@ -19,9 +18,10 @@
     </div>
     <div class="card-img-overlay" style="width: 15rem; margin-left: 1rem; margin-top: 1rem;">
         <div class="border bg-white p-2">
-            <h3>@otherPokemon.Name</h3>
+            <h3>@Routes.otherPokemon.Name</h3>
             <div class="progress">
-                <div class="progress-bar bg-danger" role="progressbar" width="5rem" style="max-width: 100%; width: @perc%" aria-valuenow="@PokemonModel.EnemyHP" aria-valuemax="@PokemonModel.EnemyHP">
+                <div class="progress-bar bg-danger" role="progressbar" width="5rem" style="max-width: 100%; width: @perc%" aria-valuenow="@PokemonModel.WildHP" aria-valuemax="@PokemonModel.MaxWildHP">
+                    @PokemonModel.WildHP
                 </div>
             </div>
         </div>
@@ -38,7 +38,6 @@
     </div>
 </div>
 
-<form asp-controller="Home" asp-action="Jungle" method="post">
     <div class="card border-dark" style="max-width: 60rem; min-height: 10rem; flex-direction: row">
         <div class="card border-dark" style="min-width: 40rem; min-height: 9rem;">
             @*Input move information here*@
@@ -46,43 +45,22 @@
         <div class="card border-dark" style="min-width: 20rem; min-height: 9rem;">
             <div class="card border-0" style="min-width:19.5rem; min-height:8.5rem; flex-direction: row">
                 <div class="m-1">
-                    <button type="submit" onclick=@AttackFunction.Damage(PKID, otherPokemon.Name, 0) style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[0].Move).Name</button>
+                <button type="submit" onclick="location.href='@Url.Action("JungleMove1", "Home")'" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[0].Move).Name</button>
                 </div>
                 <div class="m-1">
-                    <button type="submit" onclick=@AttackFunction.Damage(PKID, otherPokemon.Name, 1) style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[1].Move).Name</button>
+                <button type="submit" onclick="location.href='@Url.Action("JungleMove2", "Home")'" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[1].Move).Name</button>
                 </div>
                 <div>
                 </div>
                 <div class="m-1">
-                    <button type="submit" onclick=@AttackFunction.Damage(PKID, otherPokemon.Name, 2) style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[2].Move).Name</button>
+                <button type="submit" onclick="location.href='@Url.Action("JungleMove3", "Home")'" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[2].Move).Name</button>
                 </div>
                 <div class="m-1">
-                    <button type="submit" onclick=@AttackFunction.Damage(PKID, otherPokemon.Name, 3) style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[3].Move).Name</button>
+                <button type="submit" onclick="location.href='@Url.Action("JungleMove4", "Home")'" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[3].Move).Name</button>
                 </div>
                 <div class="m-1">
-                    <button type="submit" onclick="Catch" style="height: 4.5rem; width: 9.5rem;">Catch</button>
+                    <button type="submit" onclick="location.href='@Url.Action("Catch","Home")'" style="height: 4.5rem; width: 9.5rem;">Catch</button>
                 </div>
             </div>
         </div>
     </div>
-</form>
-
-<script>
-    function Damage(int move)
-    {
-        
-    @{  
-        //PokemonModel.EnemyHP = AttackFunction.Attack(PokemonModel.EnemyHP, PKID, otherPokemon.Name);
-
-    }
-    }
-
-    function Catch()
-    {
-    @{
-        var bo = PokemonModel.CatchPokemon();
-
-        System.Diagnostics.Debug.WriteLine(bo);
-    }
-    }
-</script>

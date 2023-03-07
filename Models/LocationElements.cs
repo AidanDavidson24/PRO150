@@ -6,6 +6,10 @@ namespace Poke_Adventures.Models
 {
     public class LoadLocation
     {
+        public static Random rand = new Random();
+        public static int AreaNum = rand.Next(0, Routes.AvailableRoutes.Count - 1);
+
+
         [JsonPropertyName("results")]
         public List<Common> Results { get; set; }
 

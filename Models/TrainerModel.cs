@@ -5,6 +5,7 @@ namespace Poke_Adventures.Models
     {          
         // Trainer Team
         public static List<CharacterPokemon> TrainerTeam = new List<CharacterPokemon> { };
+        public static int level;
 
         // randomize team based on difficulty
         public static void RandomizeTeam(string difficulty)
@@ -46,7 +47,7 @@ namespace Poke_Adventures.Models
             // gets three random pokemon
             for (int i = 0; i < 3; i++)
             {
-                int level = rand.Next(lvlMin, lvlMax);
+                level = rand.Next(lvlMin, lvlMax);
                 var pokemonIndex = rand.Next(allPokemon.Results.Count);
                 var pokemonName = PokemonElements.LoadPokemon(pokemonIndex);
 

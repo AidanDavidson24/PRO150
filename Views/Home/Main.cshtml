@@ -1,5 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Main Menu";
+
 }
 
 
@@ -11,7 +12,9 @@
                     <img src="~/images/route_1_.png" height="100%" width="100%" />
                 </div>
                 <div class="card border-0 p-2 align-content-center" style="width: 100%;">
+                    <form asp-controller="Home" asp-action="Team">
                     <button style="width: 100%; min-height: 5rem;">Team</button>
+                    </form>
                     <div class="card border-0" style="width:100%; flex-direction: row;">
                         <div>
                             <div class="card border-0" style="width: 20rem; flex-direction: row;">
