@@ -4,7 +4,7 @@
     string PKID2 = PlayerModel.PlayerTeam[0].Name;// = //random mon;
     float? perc = (float?)(PokemonModel.EnemyHP * 100 / PokemonModel.MaxEnemyHP);
     float? perc2 = (float?)(PokemonModel.PlayerHP * 100 / PokemonModel.MaxPlayerHP);
-    int moveNum = PokemonModel.moveID;
+    int moveNum = 1;
 }
 
 <div class="card border-dark p-2" style="max-width: 60rem; min-height: 30rem;">
@@ -62,6 +62,7 @@
     </div>
     <div class="card border-dark text-center p-2" style="min-width: 40rem; min-height: 9rem;">
         @MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[moveNum].Move).Flavor_Text_Entries[2].Flavor_Text
+        <button style="margin-left: 16rem; margin-top: 5rem; height: 2.5rem; width: 7rem; border-color:grey; border-radius: 20px;"> Next Move</button>
     </div>
 </div>
 
@@ -106,30 +107,4 @@
         </button>
     </div>
 </div>
-<form asp-controller="Home" asp-action="Battle" method="post">
-<div class="card border-dark" style="max-width: 60rem; min-height: 10rem; flex-direction: row">
-    <div class="card border-dark" style="min-width: 40rem; min-height: 9rem;">
-        @*Input move information here*@
-    </div>
-    <div class="card border-dark" style="min-width: 20rem; min-height: 9rem;">
-            <div class="card border-0" style="min-width:19.5rem; min-height:8.5rem; flex-direction: row">
-            <div>
-                <div class="m-1">
-                        <button type="submit" id="Move1" name="Move1" onclick="ApplyDamage" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[0].Move).Name</button>
-                </div>
-                <div class="m-1">
-                        <button type="submit" onclick="ApplyDamage" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[1].Move).Name</button>
-                </div>
-            <div>
-            </div>
-                <div class="m-1">
-                        <button type="submit" onclick="ApplyDamage" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[2].Move).Name</button>
-                </div>
-                <div class="m-1">
-                        <button type="submit" onclick="ApplyDamage" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[3].Move).Name</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
+
