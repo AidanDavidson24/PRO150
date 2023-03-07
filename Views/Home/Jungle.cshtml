@@ -38,9 +38,95 @@
     </div>
 </div>
 
-    <div class="card border-dark" style="max-width: 60rem; min-height: 10rem; flex-direction: row">
+<div class="card border-dark" style="max-width: 60rem; min-height: 10rem; flex-direction: row">
+    <div class="card border-dark" style="min-width: 20rem; min-height: 9rem;">
+        <div class="card border-0" style="min-width:19.5rem; min-height:8.5rem; flex-direction: row">
+            <div>
+                <div class="m-1">
+                    <button type="submit" onclick="location.href='@Url.Action("JungleMove1", "Home")'" style="height: 4.5rem; width: 9.5rem; border-color:grey; border-radius: 20px;">@PokemonModel.ActiveMove(PKID)[0].Name</button>
+                </div>
+                <div class="m-1">
+                    <button type="submit" onclick="location.href='@Url.Action("JungleMove2", "Home")'" style="height: 4.5rem; width: 9.5rem; border-color:grey; border-radius: 20px;">@PokemonModel.ActiveMove(PKID)[1].Name</button>
+                </div>
+            </div>
+            <div>
+                <div class="m-1">
+                    <button type="submit" onclick="location.href='@Url.Action("JungleMove3", "Home")'" style="height: 4.5rem; width: 9.5rem; border-color:grey; border-radius: 20px;">@PokemonModel.ActiveMove(PKID)[2].Name</button>
+                </div>
+                <div class="m-1">
+                    <button type="submit" onclick="location.href='@Url.Action("JungleMove4", "Home")'" style="height: 4.5rem; width: 9.5rem; border-color:grey; border-radius: 20px;">@PokemonModel.ActiveMove(PKID)[3].Name</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card border-dark text-center p-2" style="min-width: 40rem; min-height: 9rem;">
+        @MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[1].Move).Flavor_Text_Entries[2].Flavor_Text
+        <button style="margin-left: 16rem; margin-top: 5rem; height: 2.5rem; width: 7rem; border-color:grey; border-radius: 20px;"> Next Move</button>
+    </div>
+</div>
+
+<div class="card border-0" style="min-width: 60rem; min-height:5rem; flex-direction: row">
+    <div class="card border-dark" style="min-width: 20rem; min-height: 5rem">
+        <div style="padding-left: 2rem;">
+            <button class="m-2" style="width: 15rem; min-height: 4rem; border-color:grey; border-radius: 20px;">
+                Potion
+            </button>
+        </div>
+    </div>
+    <div class="card border-dark" style="min-width: 20rem; min-height: 5rem">
+        <div style="padding-left: 2rem;">
+            <button class="m-2" style="width: 15rem; min-height: 4rem; border-color:grey; border-radius: 20px;">
+                Revive
+            </button>
+        </div>
+    </div>
+    <div class="card border-dark" style="min-width: 20rem; min-height: 5rem">
+        <div style="padding-left: 2rem;">
+            <button class="m-2" type="submit" onclick="location.href='@Url.Action("Catch","Home")'" style="width: 15rem; min-height: 4rem; border-color:grey; border-radius: 20px;">
+                Pokeball
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="card border-dark" style="max-width: 60rem; min-height:12rem; flex-direction: row">
+    <div style="padding-left: 6rem">
+        <button class="m-3" style="min-width: 10rem; min-height: 10rem; border-color:grey; border-radius: 20px;">
+        </button>
+    </div>
+    <div style="padding-left: 6rem">
+        <button class="m-3" style="min-width: 10rem; min-height: 10rem; border-color:grey; border-radius: 20px;">
+        </button>
+    </div>
+    <div style="padding-left: 6rem">
+        <button class="m-3" style="min-width: 10rem; min-height: 10rem; border-color:grey; border-radius: 20px;">
+        </button>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @*<div class="card border-dark" style="max-width: 60rem; min-height: 10rem; flex-direction: row">
         <div class="card border-dark" style="min-width: 40rem; min-height: 9rem;">
-            @*Input move information here*@
+            @*Input move information here
         </div>
         <div class="card border-dark" style="min-width: 20rem; min-height: 9rem;">
             <div class="card border-0" style="min-width:19.5rem; min-height:8.5rem; flex-direction: row">
@@ -59,8 +145,8 @@
                 <button type="submit" onclick="location.href='@Url.Action("JungleMove4", "Home")'" style="height: 4.5rem; width: 9.5rem;">@MoveElements.LoadMove(PokemonElements.LoadPokemon(PKID).Moves[3].Move).Name</button>
                 </div>
                 <div class="m-1">
-                    <button type="submit" onclick="location.href='@Url.Action("Catch","Home")'" style="height: 4.5rem; width: 9.5rem;">Catch</button>
+                    <button type="submit"  style="height: 4.5rem; width: 9.5rem;">Catch</button>
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
