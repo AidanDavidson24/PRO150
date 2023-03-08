@@ -25,10 +25,6 @@ namespace Poke_Adventures.Controllers
             return View("Battle");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
         public IActionResult Main()
         {
             var pokemon = Pokemon.LoadAllPokemon();

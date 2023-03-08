@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using Poke_Adventures.Data;
+using Microsoft.AspNetCore.Identity;
+
 namespace Poke_Adventures
 {
     public class Program
@@ -8,6 +12,10 @@ namespace Poke_Adventures
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>(options => 
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
 
             var app = builder.Build();
 
@@ -23,25 +31,15 @@ namespace Poke_Adventures
             app.UseStaticFiles();
 
             app.UseRouting();
+                        app.UseAuthentication();;
 
             app.UseAuthorization();
+
+            app.MapRazorPages();
 
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Main}/{id?}");
-
-            //pattern: "pizza",
-            //pattern: "pizza{id}",
-            //pattern: "pizza/{id?}",
-            //app.MapControllerRoute(
-            //   name: "PizzaRouteTest",
-            //   pattern: "pizza/{id:int?}",
-            //   defaults: new { controller = "Home", action = "RouteTest" });
-
-            app.MapControllerRoute(
-                name: "LotsOfColors",
-                pattern: "home/colors/{*colors}",
-                defaults: new { controller = "Home", action = "Colors" });
 
             app.MapControllerRoute(
                 name: "catchall",

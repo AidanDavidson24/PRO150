@@ -1,7 +1,12 @@
-﻿namespace Poke_Adventures.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Poke_Adventures.Models
 {
     public class PlayerModel
     {
+        [Key]
+        public int? id { get; set; }
+
         public static List<CharacterPokemon> PlayerTeam = new List<CharacterPokemon> { };
 
         public static void AddPokemon(string name, int lvl)
